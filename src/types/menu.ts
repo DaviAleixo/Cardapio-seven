@@ -3,14 +3,14 @@ export interface MenuItem {
   name: string;
   description: string;
   price: number;
-  image: string;
+  image?: string;
   category: string;
   subcategory: string;
   featured?: boolean;
   tags?: string[];
 }
 
-export type MenuCategory = 'food' | 'drinks' | 'cocktails' | 'chopp';
+export type MenuCategory = 'food' | 'drinks' | 'cocktails' | 'chopp' | 'beer' | 'non-alcoholic' | 'combos' | 'doses' | 'challenge';
 
 export interface CategoryInfo {
   id: MenuCategory;
