@@ -13,13 +13,20 @@ const MenuCard: React.FC<MenuCardProps> = ({ item }) => {
     });
   };
 
+  const [currentImage, setCurrentImage] = React.useState<string>();
+  import(item.image ? `${item.image}` : '/assets/Brisket.jpg').then(
+    (image) => setCurrentImage(image.default)
+  );
+
   // Special styling for non-alcoholic beverages
   if (item.category === 'non-alcoholic') {
     return (
       <div className="menu-item bg-white rounded-lg overflow-hidden border border-gray-200 p-4">
         <div className="flex justify-between items-center">
           <h3 className="font-serif font-medium">{item.name}</h3>
-          <span className="font-bold text-black">{formatPrice(item.price)}</span>
+          <span className="font-bold text-black">
+            {formatPrice(item.price)}
+          </span>
         </div>
         {item.description && (
           <p className="text-gray-600 text-sm mt-1">{item.description}</p>
@@ -28,16 +35,13 @@ const MenuCard: React.FC<MenuCardProps> = ({ item }) => {
     );
   }
 
-  const imagem = require(item.image ? item.image: '');
-
-
   // Regular card with image for other categories
   return (
     <div className="menu-item bg-white rounded-lg overflow-hidden border border-gray-200 h-full flex flex-col">
       <div className="relative h-48 overflow-hidden">
-        <img 
-          src={imagem} 
-          alt={item.name} 
+        <img
+          src={currentImage}
+          alt={item.name}
           className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
         />
         {item.featured && (
@@ -49,9 +53,13 @@ const MenuCard: React.FC<MenuCardProps> = ({ item }) => {
       <div className="p-4 flex flex-col flex-grow">
         <div className="flex justify-between items-start mb-2">
           <h3 className="font-serif font-bold text-lg">{item.name}</h3>
-          <span className="font-bold text-black">{formatPrice(item.price)}</span>
+          <span className="font-bold text-black">
+            {formatPrice(item.price)}
+          </span>
         </div>
-        <p className="text-gray-600 text-sm mb-4 flex-grow">{item.description}</p>
+        <p className="text-gray-600 text-sm mb-4 flex-grow">
+          {item.description}
+        </p>
       </div>
     </div>
   );
