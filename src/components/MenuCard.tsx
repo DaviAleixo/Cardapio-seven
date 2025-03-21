@@ -28,12 +28,15 @@ const MenuCard: React.FC<MenuCardProps> = ({ item }) => {
     );
   }
 
+  const imagem = require(item.image ? item.image: '');
+
+
   // Regular card with image for other categories
   return (
     <div className="menu-item bg-white rounded-lg overflow-hidden border border-gray-200 h-full flex flex-col">
       <div className="relative h-48 overflow-hidden">
         <img 
-          src={item.image} 
+          src={imagem} 
           alt={item.name} 
           className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
         />
