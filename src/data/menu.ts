@@ -124,7 +124,7 @@ export const menuItems: MenuItem[] = [
     name: 'Ouro Mineiro',
     description: '400g de Costelinha suína assada, 200g de linguiça suína, 300g de mandioquinhas e 300g de batata frita',
     price: 89.90,
-    image: '/assets/ouroo-mineiro.jpeg',
+    image: '/assets/ouro-mineiro-certo.jpeg',
     category: 'food',
     subcategory: 'portions',
   },
